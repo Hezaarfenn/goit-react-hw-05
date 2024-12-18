@@ -1,0 +1,14 @@
+.movieCardOverview {
+  display: flex;
+  gap: 20px;
+}
+
+.navLink {
+  display: flex;
+  gap: 10px;
+}
+
+.information {
+  margin: unset;
+  margin-top: 20px;
+}
