@@ -3,6 +3,7 @@ import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import MovieCast from '../../components/MovieCast/MovieCast';
 import MovieReviews from '../../components/MovieReviews/MovieReviews';
 import axios from 'axios';
+import ArrowBackIcon from '../../assets/arrow-back.svg';
 import styles from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
@@ -43,6 +44,7 @@ const MovieDetailsPage = () => {
   return (
     <div className={styles.MovieDetailsContainer}>
       <button onClick={() => navigate(-1)} className={styles.goBackBtn}>
+        <img src={ArrowBackIcon} alt="Go Back" className={styles.goBackIcon} />
         Go Back
       </button>
       <div className={styles.movieCardOverview}>

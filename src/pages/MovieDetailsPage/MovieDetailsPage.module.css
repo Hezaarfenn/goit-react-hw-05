@@ -12,3 +12,14 @@
   margin: unset;
   margin-top: 20px;
 }
+
+.goBackBtn {
+  display: flex;
+  gap: 5px;
+  border: none
+}
+.goBackIcon {
+  width: 10px;
+  margin: auto;
+
+}
