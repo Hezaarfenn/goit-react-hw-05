@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const MovieCast = () => {
-  const { movieId } = useOutletContext();
+  const { movieId } = useParams();
   const [cast, setCast] = useState([]);
-  const { isLoading, setIsLoading } = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const API_KEY = 'ca02acfdac6d185387b9ec7eed3762ca';
@@ -32,11 +32,13 @@ const MovieCast = () => {
     return <p>Loading...</p>;
   }
 
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <div>
       <h2>Cast</h2>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
       {cast.length > 0 && (
         <ul>
           {cast.map((actor) => (

@@ -1,11 +1,11 @@
-import { useOutletContext } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const MovieReviews = () => {
-  const { movieId } = useOutletContext();
+  const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
-  const { isLoading, setIsLoading } = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const API_KEY = 'ca02acfdac6d185387b9ec7eed3762ca';
@@ -32,12 +32,14 @@ const MovieReviews = () => {
     return <p>Loading...</p>;
   }
 
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <div>
       <h2>Reviews</h2>
-      {isLoading && <p>Loading reviews...</p>}
-      {error && <p>{error}</p>}
-      {reviews.length === 0 && (
+      {reviews.length !== 0 ? (
         <ul>
           {reviews.map((review) => (
             <li key={review.id}>
@@ -46,6 +48,8 @@ const MovieReviews = () => {
             </li>
           ))}
         </ul>
+      ): (
+        <p>No reviews yet</p>
       )}
     </div>
   );
